@@ -8,7 +8,8 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
-
+from dotenv import load_dotenv
+load_dotenv()
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
