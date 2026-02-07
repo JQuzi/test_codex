@@ -2,6 +2,7 @@
 
 ## Возможности
 
+- Отвечает на все входящие сообщения, включая текст, стикеры и GIF.
 - Отвечает текстом на все входящие сообщения (включая подписи к медиа).
 - Команда `/start` показывает приветствие.
 
@@ -16,6 +17,19 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+3. Create a `.env` file with the bot token:
+
+```bash
+TELEGRAM_BOT_TOKEN="YOUR_TOKEN"
+```
+
+4. Run the bot:
+
+```bash
+python bot.py
+```
+
+The bot will echo back any message it receives.
 3. Export the token and run the bot:
 
 ```bash

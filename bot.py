@@ -1,5 +1,7 @@
 import logging
 import os
+
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
@@ -8,6 +10,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -27,6 +30,15 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if update.message is None or update.effective_chat is None:
+        return
+
+    logger.info("Echoing message from user %s", update.effective_user.id)
+    await update.message.copy(chat_id=update.effective_chat.id)
+
+
+def main() -> None:
+    load_dotenv()
     if update.message is None:
         return
 
