@@ -3,6 +3,7 @@
 ## Возможности
 
 - Отвечает на все входящие сообщения, включая текст, стикеры и GIF.
+- Отвечает текстом на все входящие сообщения (включая подписи к медиа).
 - Команда `/start` показывает приветствие.
 
 ## Setup
@@ -29,3 +30,11 @@ python bot.py
 ```
 
 The bot will echo back any message it receives.
+3. Export the token and run the bot:
+
+```bash
+export TELEGRAM_BOT_TOKEN="YOUR_TOKEN"
+python bot.py
+```
+
+The bot will echo back any text message it receives.

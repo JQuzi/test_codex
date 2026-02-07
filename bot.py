@@ -11,6 +11,8 @@ from telegram.ext import (
     filters,
 )
 
+from dotenv import load_dotenv
+load_dotenv()
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -37,6 +39,19 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 def main() -> None:
     load_dotenv()
+    if update.message is None:
+        return
+
+    text = update.message.text or update.message.caption
+    if not text:
+        await update.message.reply_text("Я пока умею отвечать только на текстовые сообщения.")
+        return
+
+    logger.info("Echoing message from user %s", update.effective_user.id)
+    await update.message.reply_text(text)
+
+
+def main() -> None:
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN is not set")
